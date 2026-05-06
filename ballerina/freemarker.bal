@@ -21,17 +21,25 @@ import ballerina/jballerina.java;
 # + template - FreeMarker template string (uses `${variable}`, `<#if>`, `<#list>` syntax)
 # + data - Key-value pairs used as the data context for rendering
 # + return - Rendered string output or an `Error` if rendering fails
-public isolated function render(string template, record {|json...;|} data) returns string|Error = @java:Method {
-    'class: "io.ballerina.lib.freemarker.FreemarkerUtils",
-    name: "render"
-} external;
+public isolated function render(string template, record {|json...;|} data) returns string|Error {
+    return renderNative(template, data.toJsonString());
+}
 
 # Renders a FreeMarker template from a file with the provided data context.
 #
 # + templatePath - Path to the FreeMarker template file (typically `.ftl` extension)
 # + data - Key-value pairs used as the data context for rendering
 # + return - Rendered string output or an `Error` if rendering fails
-public isolated function renderFromFile(string templatePath, record {|json...;|} data) returns string|Error = @java:Method {
+public isolated function renderFromFile(string templatePath, record {|json...;|} data) returns string|Error {
+    return renderFromFileNative(templatePath, data.toJsonString());
+}
+
+isolated function renderNative(string template, string jsonData) returns string|Error = @java:Method {
+    'class: "io.ballerina.lib.freemarker.FreemarkerUtils",
+    name: "render"
+} external;
+
+isolated function renderFromFileNative(string templatePath, string jsonData) returns string|Error = @java:Method {
     'class: "io.ballerina.lib.freemarker.FreemarkerUtils",
     name: "renderFromFile"
 } external;
