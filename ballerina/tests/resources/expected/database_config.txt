@@ -1,0 +1,10 @@
+# Auto-generated database configuration
+db.host=db-prod-primary.internal
+db.port=5432
+db.name=orders_db
+db.username=svc_orders
+db.password=s3cr3t!Pass
+db.pool.min=5
+db.pool.max=50
+db.pool.timeout=30000
+db.ssl.enabled=true

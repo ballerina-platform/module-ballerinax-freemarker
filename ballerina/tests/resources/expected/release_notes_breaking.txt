@@ -1,0 +1,108 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+  Ballerina HTTP Module — Release Notes
+  Version 3.0.0 | Released: 2026-04-24 | Type: Major
+╚══════════════════════════════════════════════════════════════════════════╝
+
+  ╔══════════════════════════════════════════════════════════════╗
+  ⚠  BREAKING CHANGES — Please review the migration guide
+     before upgrading: https://lib.ballerina.io/ballerina/http/migration/3.0.0
+  ╚══════════════════════════════════════════════════════════════╝
+
+OVERVIEW
+────────────────────────────────────────────────────────────────────────────
+Major release introducing a redesigned connection pooling API, native HTTP/3 support, and automatic TLS certificate rotation. Includes two breaking changes to the client configuration API.
+
+  Release Manager : Nuvindu Perera
+  QA Lead         : Pooja Iyer
+  Build Number    : 2026.04.24.001
+  Git Tag         : v3.0.0
+  Commit          : 9f3a1c8d
+  Artifact URL    : https://dist.ballerina.io/artifacts/http-3.0.0.jar
+  Changelog       : https://github.com/ballerina-platform/module-ballerina-http/blob/main/changelog.md
+  Milestone       : https://github.com/ballerina-platform/module-ballerina-http/milestone/42
+
+COMPATIBILITY
+────────────────────────────────────────────────────────────────────────────
+  Runtime         : Ballerina 2201.10.0 or later
+  Database        : N/A
+  API             : Incompatible with 2.x client configurations (see migration guide)
+  Upgrade From    : 2.9.0 or later
+                    (earlier versions require a full migration — see https://lib.ballerina.io/ballerina/http/migration/3.0.0)
+
+NEW FEATURES
+────────────────────────────────────────────────────────────────────────────
+  Native HTTP/3 and QUIC support  [HTTP-7821]
+    Full HTTP/3 over QUIC support with automatic protocol negotiation. Falls back to HTTP/2 when QUIC is unavailable.
+
+  Automatic TLS certificate rotation  [HTTP-7654]
+    Certificates are hot-reloaded from the configured path without restarting the listener. Supports Let's Encrypt ACME protocol.
+
+  Redesigned connection pool configuration API  [HTTP-7400]
+    New PoolConfig record with named fields replaces the positional constructor. Adds maxWaitTime, minEvictableIdleTime, and healthCheckInterval settings.
+
+  Request/response interceptor pipeline  [HTTP-7299]
+    Chainable interceptors for cross-cutting concerns such as auth, logging, and rate-limiting applied at the service level.
+
+IMPROVEMENTS
+────────────────────────────────────────────────────────────────────────────
+  * Reduce default idle connection eviction time from 60s to 30s  (HTTP-7900)
+  * Add detailed connection pool metrics to Prometheus exporter  (HTTP-7881)
+  * Improve error messages for TLS handshake failures  (HTTP-7845)
+  * Support chunked transfer encoding in client streaming mode  (HTTP-7812)
+
+BUG FIXES
+────────────────────────────────────────────────────────────────────────────
+  [HIGH]  Fix race condition causing sporadic NPE under concurrent pool resize  (HTTP-7955)
+  [HIGH]  Fix memory leak when connections are forcibly closed during TLS renegotiation  (HTTP-7933)
+  [MEDIUM]  Fix incorrect Content-Length header for compressed responses  (HTTP-7871)
+  [MEDIUM]  Fix 431 status code not propagated to caller in HTTP/2 mode  (HTTP-7850)
+  [LOW]  Fix missing newline in multipart boundary for certain MIME types  (HTTP-7802)
+
+KNOWN ISSUES
+────────────────────────────────────────────────────────────────────────────
+  [MEDIUM]  HTTP/3 handshake may fail on networks blocking UDP port 443
+    Workaround : Set httpVersion to HTTP_2 in ClientConfiguration until QUIC fallback is enhanced
+    Tracking   : HTTP-8001
+
+  [LOW]  Certificate rotation triggers a brief 50ms latency spike per worker
+    Workaround : Schedule rotation during low-traffic windows using cronExpression field
+    Tracking   : HTTP-8009
+
+MIGRATION GUIDE SUMMARY
+────────────────────────────────────────────────────────────────────────────
+  Breaking Change 1 : PoolConfig constructor replaced by record literal syntax
+    Action Required : Replace http:PoolConfig(8, 2) with http:PoolConfig { maxConnections: 8, minIdleConnections: 2 }
+
+  Breaking Change 2 : ClientConfiguration.poolConfig type changed from PoolConfig? to ConnectionPoolConfig
+    Action Required : Update imports and field assignment - see migration guide Section 2
+
+  Full guide: https://lib.ballerina.io/ballerina/http/migration/3.0.0
+
+SECURITY ADVISORIES
+────────────────────────────────────────────────────────────────────────────
+  [HIGH] BSEC-2026-0042: HTTP response splitting via unvalidated header injection
+    CVE             : CVE-2026-31887
+    Affected vers.  : 2.x, 3.0.0-alpha through 3.0.0-rc3
+    Fixed in        : 3.0.0
+    Details         : https://security.ballerina.io/advisories/BSEC-2026-0042
+
+DEPENDENCY UPDATES
+────────────────────────────────────────────────────────────────────────────
+  netty: 4.1.107 -> 4.1.109
+  conscrypt: 2.5.2 -> 2.5.3
+  micrometer-core: 1.12.4 -> 1.12.5
+  jackson-databind: 2.16.1 -> 2.16.2
+
+CONTRIBUTORS
+────────────────────────────────────────────────────────────────────────────
+  Nuvindu Perera, Pooja Iyer, Anjana Silva, TJ Jayawardana, Shafreen Anfar
+
+  Total commits  : 118
+  Files changed  : 247
+  Insertions (+) : 8934
+  Deletions  (-) : 4201
+
+────────────────────────────────────────────────────────────────────────────
+Documentation  : https://lib.ballerina.io/ballerina/http/3.0.0
+Report issues  : https://github.com/ballerina-platform/module-ballerina-http/issues
+Community      : https://discord.gg/ballerinalang

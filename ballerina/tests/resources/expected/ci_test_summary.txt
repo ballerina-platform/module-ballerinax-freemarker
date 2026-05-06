@@ -1,0 +1,15 @@
+╔══════════════════════════════════════╗
+  CI Test Summary — module-ballerina-http
+╚══════════════════════════════════════╝
+  Branch   : feature/connection-pooling
+  Commit   : a1b2c3d
+  Runner   : Ubuntu / x86_64
+
+  Total    : 312
+  Passed   : 308
+  Failed   : 2
+  Skipped  : 2
+  Duration : 183s
+  Coverage : 87.4%
+
+  Status: UNSTABLE

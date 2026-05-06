@@ -1,0 +1,91 @@
+INCIDENT REPORT
+═══════════════════════════════════════════════════════════════════════
+Report ID       : INC-RPT-2026-00301
+Classification  : INTERNAL
+Status          : RESOLVED
+Created By      : Lena Fischer
+Created At      : 2026-04-16 09:10:00 UTC
+Last Updated    : 2026-04-16 10:30:00 UTC
+═══════════════════════════════════════════════════════════════════════
+
+1. INCIDENT OVERVIEW
+───────────────────────────────────────────────────────────────────────
+Title            : Elevated error rate on report-generation service
+Severity         : SEV-3
+Priority         : P3
+Incident ID      : INC-2026-04160044
+Detected At      : 2026-04-16 08:45:00 UTC
+Resolved At      : 2026-04-16 09:52:00 UTC
+Total Duration   : 67 minutes
+Environment      : production
+Affected Service : report-service
+On-call Team     : Analytics Platform
+Incident Owner   : Lena Fischer
+
+2. IMPACT ASSESSMENT
+───────────────────────────────────────────────────────────────────────
+Affected Region      : us-west-2
+Affected Users (est) : ~300
+Peak Error Rate      : 12%
+P99 Latency Peak     : 8200ms  (SLO threshold: 2000ms)
+Revenue Impact (est) : $0
+SLA Breach           : No
+Customer Facing      : No (internal only)
+Data Loss            : None confirmed
+Security Impact      : None identified
+
+3. ROOT CAUSE ANALYSIS
+───────────────────────────────────────────────────────────────────────
+Category        : Application - Memory
+Root Cause      :
+  Report generation worker running OOM due to unbounded in-memory aggregation on large datasets.
+
+Contributing Factors:
+  - No memory cap on aggregation pipeline
+  - Dataset size increased 3x after new customer onboarded
+
+Trigger Event   : Large dataset export triggered by enterprise customer batch job
+First Alert     : CloudWatch alarm at 2026-04-16 08:45:00 UTC
+Detection Method: CloudWatch OOM alarm
+Alert ID        : ALT-20260416-00091
+
+4. TIMELINE OF EVENTS
+───────────────────────────────────────────────────────────────────────
+  2026-04-16 08:45:00 UTC   Incident detected via CloudWatch OOM alarm
+  2026-04-16 08:50:00 UTC   Alert acknowledged by Lena Fischer
+  2026-04-16 09:05:00 UTC  Root cause identified: OOM in aggregation pipeline for large datasets
+  2026-04-16 09:20:00 UTC Mitigation applied: Restarted report workers and added per-job memory limit of 2 GB
+  2026-04-16 09:52:00 UTC   Incident resolved; system confirmed stable
+  2026-04-16 09:10:00 UTC   Post-incident report filed by Lena Fischer
+
+5. MITIGATION AND RESOLUTION
+───────────────────────────────────────────────────────────────────────
+Mitigation      : Restarted report workers and added per-job memory limit of 2 GB
+Resolution      : Memory limit applied; streaming aggregation scheduled for next sprint
+Rollback        : Not required
+Fix Deployed    : Pending — target: 2026-04-30
+Monitoring OK   : Confirmed stable at 2026-04-16 09:52:00 UTC
+
+6. CORRECTIVE ACTION ITEMS
+───────────────────────────────────────────────────────────────────────
+ID       Owner                Due Date      Priority   Description
+-------- -------------------- ------------- ---------- ----------------------------------------
+AI-001   Lena Fischer       2026-04-30  HIGH       Replace in-memory aggregation with streaming pipeline
+AI-002   Lena Fischer       2026-04-23  HIGH       Add per-job memory limit to report worker configuration
+AI-003   Platform SRE       2026-04-23  MEDIUM     Add OOM rate alert for report-service workers
+AI-004   Lena Fischer       2026-04-30  LOW        Document dataset size limits in developer runbook
+
+7. LESSONS LEARNED AND PREVENTION
+───────────────────────────────────────────────────────────────────────
+What went well   : Fast detection and diagnosis due to clear OOM signal
+What went poorly : No memory limits were defined for report workers
+Process Gap      : Large-dataset scenarios not covered in load testing
+Monitoring Gap   : No memory utilization trend alerting for report workers
+Runbook          : Required by 2026-04-30
+Post-Mortem      : 2026-04-18 10:00:00 UTC, owner: Lena Fischer
+Jira Epic        : ANA-3341
+
+═══════════════════════════════════════════════════════════════════════
+Approved by   : Lena Fischer
+Approval time : 2026-04-16 10:30:00 UTC
+═══════════════════════════════════════════════════════════════════════

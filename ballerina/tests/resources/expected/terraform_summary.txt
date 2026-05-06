@@ -1,0 +1,17 @@
+# Terraform Apply — Resource Summary
+
+Workspace  : prod-us-east-1
+Backend    : s3://tf-state-bucket/prod/us-east-1
+Run ID     : run-AbCdEf123456
+Triggered  : github-actions[bot] at 2026-04-15T12:00:00Z
+
+Changes applied:
+  + 4 to add
+  ~ 2 to change
+  - 1 to destroy
+
+State file  : prod/us-east-1/terraform.tfstate
+Lock ID     : a1b2c3d4-e5f6-7890-abcd-ef1234567890
+Duration    : 68s
+
+Apply complete! Resources: 4 added, 2 changed, 1 destroyed.

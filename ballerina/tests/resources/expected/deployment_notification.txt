@@ -1,0 +1,8 @@
+:rocket: *Deployment Successful*
+  Service     : `payment-service`
+  Version     : `v3.7.2`
+  Environment : `production`
+  Region      : `us-east-1`
+  Deployed by : ci-bot
+  Duration    : 47s
+  Commit      : f3a9c12 — Fix race condition in transaction lock

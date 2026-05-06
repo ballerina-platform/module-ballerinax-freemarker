@@ -1,0 +1,11 @@
+BOARDING PASS
+═══════════════════════════════════════════════
+Passenger  : Alice Johnson
+Flight     : UL 504  CMB → LHR
+Gate       : B12
+Seat       : 14C   Class: Economy
+───────────────────────────────────────────────
+Boarding   : Mon, Apr 15 · 14:30
+Departure  : Mon, Apr 15 · 15:00
+Arrival    : Mon, Apr 15 · 23:45
+═══════════════════════════════════════════════
