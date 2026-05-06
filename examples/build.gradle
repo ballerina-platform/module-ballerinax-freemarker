@@ -21,7 +21,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 description = 'Ballerina - FreeMarker Examples'
 
 def ballerinaDist = "${project.rootDir}/target/ballerina-runtime"
-def examples = ["freemarker-hello-world"]
+def examples = ["freemarker-order-confirmation"]
 def graalvmFlag = ""
 
 tasks.register('clean') {
