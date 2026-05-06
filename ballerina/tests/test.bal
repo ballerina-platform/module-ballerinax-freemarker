@@ -921,7 +921,7 @@ function testDateFormatBuiltin() returns error? {
         "${boardingTime?datetime(\"yyyy-MM-dd HH:mm\")?string(\"EEE, MMM d · HH:mm\")}",
         {"boardingTime": "2026-04-15 14:30"}
     );
-    test:assertEquals(result, "Mon, Apr 15 · 14:30");
+    test:assertEquals(result, "Wed, Apr 15 · 14:30");
 }
 
 @test:Config {}
