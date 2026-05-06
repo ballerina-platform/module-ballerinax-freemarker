@@ -9,7 +9,13 @@ metadata:
     team: ${teamName}
 spec:
   replicas: ${replicas}
+  selector:
+    matchLabels:
+      app: ${appName}
   template:
+    metadata:
+      labels:
+        app: ${appName}
     spec:
       containers:
         - name: ${appName}

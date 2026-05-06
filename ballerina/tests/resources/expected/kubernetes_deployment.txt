@@ -9,7 +9,13 @@ metadata:
     team: platform
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: auth-service
   template:
+    metadata:
+      labels:
+        app: auth-service
     spec:
       containers:
         - name: auth-service
