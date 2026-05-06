@@ -1,0 +1,13 @@
+{
+    "workspace": "prod-us-east-1",
+    "backend": "s3://tf-state-bucket/prod/us-east-1",
+    "runId": "run-AbCdEf123456",
+    "triggeredBy": "github-actions[bot]",
+    "triggeredAt": "2026-04-15T12:00:00Z",
+    "resourcesAdded": "4",
+    "resourcesChanged": "2",
+    "resourcesDestroyed": "1",
+    "stateFile": "prod/us-east-1/terraform.tfstate",
+    "lockId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "durationSeconds": "68"
+}

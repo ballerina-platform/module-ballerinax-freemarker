@@ -1,0 +1,16 @@
+{
+    "severity": "CRITICAL",
+    "alertType": "Privilege Escalation Attempt",
+    "alertId": "SEC-2026-04150042",
+    "detectedAt": "2026-04-15 11:44:28",
+    "affectedAsset": "prod-db-primary (10.0.1.5)",
+    "sourceIp": "192.0.2.88",
+    "actorIdentity": "svc_legacy_importer",
+    "action": "GRANT ALL PRIVILEGES",
+    "resource": "orders_db.*",
+    "riskScore": "97",
+    "description": "Service account attempted to grant superuser privileges on production database.",
+    "recommendedAction": "Revoke credentials, rotate secrets, and initiate incident response playbook IR-DB-01.",
+    "assignee": "security-oncall@example.com",
+    "ticketUrl": "https://jira.example.com/browse/SEC-4421"
+}

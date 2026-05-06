@@ -1,0 +1,14 @@
+{
+    "ticketId": "TKT-2026-083441",
+    "requesterName": "Dr. Nguyen Van An",
+    "tier": "Enterprise",
+    "subject": "Data export fails silently for reports > 100k rows",
+    "priority": "High",
+    "category": "Bug / Data",
+    "submittedAt": "2026-04-15 13:05 UTC",
+    "firstResponseHours": "2",
+    "resolutionHours": "24",
+    "agentName": "Fatima Al-Hassan",
+    "agentEmail": "f.alhassan@support.example.com",
+    "trackingUrl": "https://support.example.com/tickets/TKT-2026-083441"
+}
