@@ -1,0 +1,25 @@
+[package]
+org = "ballerina"
+name = "freemarker"
+version = "0.1.0"
+authors = ["WSO2"]
+keywords = ["freemarker", "template", "rendering"]
+repository = "https://github.com/ballerina-platform/module-ballerina-freemarker"
+license = ["Apache-2.0"]
+export = ["freemarker"]
+
+[build-options]
+observabilityIncluded = true
+graalvmCompatible = true
+
+[[platform.java21.dependency]]
+groupId = "io.ballerina.lib"
+artifactId = "freemarker-native"
+version = "0.1.0"
+path = "../native/build/libs/freemarker-native-0.1.0-SNAPSHOT.jar"
+
+[[platform.java21.dependency]]
+groupId = "org.freemarker"
+artifactId = "freemarker"
+version = "2.3.33"
+path = "./lib/freemarker-2.3.33.jar"
