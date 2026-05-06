@@ -63,6 +63,15 @@ dependencies {
     externalJars(group: 'org.freemarker', name: 'freemarker', version: "${freemarkerVersion}") {
         transitive = false
     }
+    externalJars(group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "${jacksonVersion}") {
+        transitive = false
+    }
+    externalJars(group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "${jacksonVersion}") {
+        transitive = false
+    }
+    externalJars(group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: "${jacksonVersion}") {
+        transitive = false
+    }
 }
 
 task copyExternalJarsToLib(type: Copy) {
@@ -75,6 +84,7 @@ task updateTomlFiles {
         def newConfig = ballerinaTomlFilePlaceHolder.text.replace("@project.version@", project.version)
         newConfig = newConfig.replace("@toml.version@", tomlVersion)
         newConfig = newConfig.replace("@freemarker.version@", project.freemarkerVersion)
+        newConfig = newConfig.replace("@jackson.version@", project.jacksonVersion)
         ballerinaTomlFile.text = newConfig
     }
 }
