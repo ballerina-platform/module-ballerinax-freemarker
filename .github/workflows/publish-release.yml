@@ -13,4 +13,4 @@ jobs:
         secrets: inherit
         with:
           package-name: freemarker
-          package-org: ballerina
+          package-org: ballerinax
