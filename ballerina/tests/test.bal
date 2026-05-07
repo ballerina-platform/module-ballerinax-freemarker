@@ -52,182 +52,182 @@ function testMissingVariable() returns error? {
 @test:Config {}
 function testOrderConfirmationEmail() returns error? {
     string result = check renderFromFile(RESOURCES + "order_confirmation.ftl", check readData("order_confirmation.json"));
-    string expected = check io:fileReadString(EXPECTED + "order_confirmation.txt");
+    string expected = check io:fileReadString(EXPECTED + "order_confirmation.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testPasswordResetEmail() returns error? {
     string result = check renderFromFile(RESOURCES + "password_reset.ftl", check readData("password_reset.json"));
-    string expected = check io:fileReadString(EXPECTED + "password_reset.txt");
+    string expected = check io:fileReadString(EXPECTED + "password_reset.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testDeploymentNotification() returns error? {
     string result = check renderFromFile(RESOURCES + "deployment_notification.ftl", check readData("deployment_notification.json"));
-    string expected = check io:fileReadString(EXPECTED + "deployment_notification.txt");
+    string expected = check io:fileReadString(EXPECTED + "deployment_notification.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testApiErrorResponseTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "api_error_response.ftl", check readData("api_error_response.json"));
-    string expected = check io:fileReadString(EXPECTED + "api_error_response.txt");
+    string expected = check io:fileReadString(EXPECTED + "api_error_response.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testDatabaseConfigTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "database_config.ftl", check readData("database_config.json"));
-    string expected = check io:fileReadString(EXPECTED + "database_config.txt");
+    string expected = check io:fileReadString(EXPECTED + "database_config.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testHttpAccessLogTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "http_access_log.ftl", check readData("http_access_log.json"));
-    string expected = check io:fileReadString(EXPECTED + "http_access_log.txt");
+    string expected = check io:fileReadString(EXPECTED + "http_access_log.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testCiTestSummaryReport() returns error? {
     string result = check renderFromFile(RESOURCES + "ci_test_summary.ftl", check readData("ci_test_summary.json"));
-    string expected = check io:fileReadString(EXPECTED + "ci_test_summary.txt");
+    string expected = check io:fileReadString(EXPECTED + "ci_test_summary.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testInvoiceTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "invoice.ftl", check readData("invoice.json"));
-    string expected = check io:fileReadString(EXPECTED + "invoice.txt");
+    string expected = check io:fileReadString(EXPECTED + "invoice.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testKubernetesPodAnnotationTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "kubernetes_deployment.ftl", check readData("kubernetes_deployment.json"));
-    string expected = check io:fileReadString(EXPECTED + "kubernetes_deployment.txt");
+    string expected = check io:fileReadString(EXPECTED + "kubernetes_deployment.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testSecurityAlertTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "security_alert.ftl", check readData("security_alert.json"));
-    string expected = check io:fileReadString(EXPECTED + "security_alert.txt");
+    string expected = check io:fileReadString(EXPECTED + "security_alert.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testNewsletterPremium() returns error? {
     string result = check renderFromFile(RESOURCES + "newsletter.ftl", check readData("newsletter_premium.json"));
-    string expected = check io:fileReadString(EXPECTED + "newsletter_premium.txt");
+    string expected = check io:fileReadString(EXPECTED + "newsletter_premium.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testNewsletterFree() returns error? {
     string result = check renderFromFile(RESOURCES + "newsletter.ftl", check readData("newsletter_free.json"));
-    string expected = check io:fileReadString(EXPECTED + "newsletter_free.txt");
+    string expected = check io:fileReadString(EXPECTED + "newsletter_free.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testStructuredLogEntryTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "structured_log.ftl", check readData("structured_log.json"));
-    string expected = check io:fileReadString(EXPECTED + "structured_log.txt");
+    string expected = check io:fileReadString(EXPECTED + "structured_log.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testOAuth2TokenIntrospectionTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "oauth2_introspection.ftl", check readData("oauth2_introspection.json"));
-    string expected = check io:fileReadString(EXPECTED + "oauth2_introspection.txt");
+    string expected = check io:fileReadString(EXPECTED + "oauth2_introspection.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testOnboardingEmailWithPhone() returns error? {
     string result = check renderFromFile(RESOURCES + "onboarding_email.ftl", check readData("onboarding_email_with_phone.json"));
-    string expected = check io:fileReadString(EXPECTED + "onboarding_email_with_phone.txt");
+    string expected = check io:fileReadString(EXPECTED + "onboarding_email_with_phone.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testOnboardingEmailWithoutPhone() returns error? {
     string result = check renderFromFile(RESOURCES + "onboarding_email.ftl", check readData("onboarding_email_without_phone.json"));
-    string expected = check io:fileReadString(EXPECTED + "onboarding_email_without_phone.txt");
+    string expected = check io:fileReadString(EXPECTED + "onboarding_email_without_phone.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testTerraformResourceSummaryTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "terraform_summary.ftl", check readData("terraform_summary.json"));
-    string expected = check io:fileReadString(EXPECTED + "terraform_summary.txt");
+    string expected = check io:fileReadString(EXPECTED + "terraform_summary.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testSupportTicketAcknowledgement() returns error? {
     string result = check renderFromFile(RESOURCES + "support_ticket.ftl", check readData("support_ticket.json"));
-    string expected = check io:fileReadString(EXPECTED + "support_ticket.txt");
+    string expected = check io:fileReadString(EXPECTED + "support_ticket.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testTemplateWithFreemarkerComment() returns error? {
     string result = check renderFromFile(RESOURCES + "financial_report.ftl", check readData("financial_report.json"));
-    string expected = check io:fileReadString(EXPECTED + "financial_report.txt");
+    string expected = check io:fileReadString(EXPECTED + "financial_report.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testIncidentReportFullP1() returns error? {
     string result = check renderFromFile(RESOURCES + "incident_report.ftl", check readData("incident_report_p1.json"));
-    string expected = check io:fileReadString(EXPECTED + "incident_report_p1.txt");
+    string expected = check io:fileReadString(EXPECTED + "incident_report_p1.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testIncidentReportSev3NoExternalComms() returns error? {
     string result = check renderFromFile(RESOURCES + "incident_report.ftl", check readData("incident_report_sev3.json"));
-    string expected = check io:fileReadString(EXPECTED + "incident_report_sev3.txt");
+    string expected = check io:fileReadString(EXPECTED + "incident_report_sev3.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testHtmlWelcomeEmailPremium() returns error? {
     string result = check renderFromFile(RESOURCES + "html_welcome_email.ftl", check readData("html_welcome_email_premium.json"));
-    string expected = check io:fileReadString(EXPECTED + "html_welcome_email_premium.txt");
+    string expected = check io:fileReadString(EXPECTED + "html_welcome_email_premium.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testHtmlWelcomeEmailFreeTier() returns error? {
     string result = check renderFromFile(RESOURCES + "html_welcome_email.ftl", check readData("html_welcome_email_free.json"));
-    string expected = check io:fileReadString(EXPECTED + "html_welcome_email_free.html");
+    string expected = check io:fileReadString(EXPECTED + "html_welcome_email_free.html") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testReleaseNotesBreakingWithAdvisory() returns error? {
     string result = check renderFromFile(RESOURCES + "release_notes.ftl", check readData("release_notes_breaking.json"));
-    string expected = check io:fileReadString(EXPECTED + "release_notes_breaking.txt");
+    string expected = check io:fileReadString(EXPECTED + "release_notes_breaking.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testReleaseNotesPatchNoAdvisory() returns error? {
     string result = check renderFromFile(RESOURCES + "release_notes.ftl", check readData("release_notes_patch.json"));
-    string expected = check io:fileReadString(EXPECTED + "release_notes_patch.txt");
+    string expected = check io:fileReadString(EXPECTED + "release_notes_patch.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
 @test:Config {}
 function testPurchaseOrderTable() returns error? {
     string result = check renderFromFile(RESOURCES + "purchase_order.ftl", check readData("purchase_order.json"));
-    string expected = check io:fileReadString(EXPECTED + "purchase_order.txt");
+    string expected = check io:fileReadString(EXPECTED + "purchase_order.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
@@ -243,7 +243,7 @@ function testDateFormatBuiltin() returns error? {
 @test:Config {}
 function testFlightBoardingPassTemplate() returns error? {
     string result = check renderFromFile(RESOURCES + "flight_boarding.ftl", check readData("flight_boarding.json"));
-    string expected = check io:fileReadString(EXPECTED + "flight_boarding.txt");
+    string expected = check io:fileReadString(EXPECTED + "flight_boarding.txt") + "\n";
     test:assertEquals(result, expected);
 }
 
