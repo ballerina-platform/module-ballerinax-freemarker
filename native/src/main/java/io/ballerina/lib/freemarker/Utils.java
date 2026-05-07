@@ -19,12 +19,12 @@
 package io.ballerina.lib.freemarker;
 
 import io.ballerina.runtime.api.creators.ErrorCreator;
+import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BError;
 
 import java.util.Objects;
 
 import static io.ballerina.lib.freemarker.ModuleUtils.getModule;
-import static io.ballerina.runtime.api.utils.StringUtils.fromString;
 
 /**
  * Utility class containing helper methods for the Ballerina FreeMarker module.
@@ -38,6 +38,8 @@ public final class Utils {
 
     public static BError createError(String message, Throwable throwable) {
         BError cause = Objects.isNull(throwable) ? null : ErrorCreator.createError(throwable);
-        return ErrorCreator.createError(getModule(), ERROR_TYPE, fromString(message), cause, null);
+        String errorMessage = (message != null)
+                ? message : (throwable != null ? throwable.getClass().getSimpleName() : "internal error");
+        return ErrorCreator.createError(getModule(), ERROR_TYPE, StringUtils.fromString(errorMessage), cause, null);
     }
 }
