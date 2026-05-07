@@ -199,7 +199,7 @@ function testIncidentReportSev3NoExternalComms() returns error? {
 @test:Config {}
 function testHtmlWelcomeEmailPremium() returns error? {
     string result = check renderFromFile(RESOURCES + "html_welcome_email.ftl", check readData("html_welcome_email_premium.json"));
-    string expected = check io:fileReadString(EXPECTED + "html_welcome_email_premium.txt") + "\n";
+    string expected = check io:fileReadString(EXPECTED + "html_welcome_email_premium.html") + "\n";
     test:assertEquals(result, expected);
 }
 
@@ -294,7 +294,7 @@ function generateExpectedFiles() returns error? {
         check renderFromFile(RESOURCES + "incident_report.ftl", check readData("incident_report_p1.json")));
     check io:fileWriteString(EXPECTED + "incident_report_sev3.txt",
         check renderFromFile(RESOURCES + "incident_report.ftl", check readData("incident_report_sev3.json")));
-    check io:fileWriteString(EXPECTED + "html_welcome_email_premium.txt",
+    check io:fileWriteString(EXPECTED + "html_welcome_email_premium.html",
         check renderFromFile(RESOURCES + "html_welcome_email.ftl", check readData("html_welcome_email_premium.json")));
     check io:fileWriteString(EXPECTED + "html_welcome_email_free.html",
         check renderFromFile(RESOURCES + "html_welcome_email.ftl", check readData("html_welcome_email_free.json")));
