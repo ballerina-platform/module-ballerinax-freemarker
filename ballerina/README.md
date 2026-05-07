@@ -1,8 +1,15 @@
 ## Overview
 
-The `ballerina/freemarker` library provides a Ballerina interface to [Apache FreeMarker](https://freemarker.apache.org/), a Java-based template engine for generating text output such as HTML pages, email bodies, configuration files, and source code from templates and data models.
+The `ballerina/freemarker` library provides a Ballerina interface to [Apache FreeMarker](https://freemarker.apache.org/), a Java-based template engine for generating text output (HTML, email, configuration files, source code, etc.) from templates and data.
 
 This library supports GraalVM native image compilation.
+
+It exposes two core functions:
+
+- **`render`** — renders a FreeMarker template string with a provided data context.
+- **`renderFromFile`** — renders a FreeMarker template loaded from a `.ftl` file.
+
+Both functions accept a `record {|json...;|}` data map, making it straightforward to pass structured Ballerina data into your templates.
 
 ## Quickstart
 
@@ -57,7 +64,7 @@ public function main() returns error? {
 
 FreeMarker templates use `${...}` for variable interpolation, `<#if>` for conditionals, and `<#list>` for iteration:
 
-```
+```ftl
 Dear ${customerName},
 
 Your order ${orderId} is confirmed.
@@ -84,11 +91,9 @@ public isolated function render(string template, record {|json...;|} data) retur
 
 Renders a FreeMarker template string with the provided data context.
 
-| Parameter  | Type                    | Description                                          |
-|------------|-------------------------|------------------------------------------------------|
-| `template` | `string`                | FreeMarker template string                           |
-| `data`     | `record {|json...;|}`   | Key-value pairs used as the data context             |
-| **return** | `string\|Error`         | Rendered string output, or an `Error` on failure     |
+- `template` (`string`) — FreeMarker template string
+- `data` (`record {|json...;|}`) — Key-value pairs used as the data context
+- **return** (`string|Error`) — Rendered string output, or an `Error` on failure
 
 ### `renderFromFile`
 
@@ -98,12 +103,12 @@ public isolated function renderFromFile(string templatePath, record {|json...;|}
 
 Renders a FreeMarker template loaded from a file.
 
-| Parameter      | Type                    | Description                                          |
-|----------------|-------------------------|------------------------------------------------------|
-| `templatePath` | `string`                | Path to the `.ftl` template file                     |
-| `data`         | `record {|json...;|}`   | Key-value pairs used as the data context             |
-| **return**     | `string\|Error`         | Rendered string output, or an `Error` on failure     |
+- `templatePath` (`string`) — Path to the `.ftl` template file
+- `data` (`record {|json...;|}`) — Key-value pairs used as the data context
+- **return** (`string|Error`) — Rendered string output, or an `Error` on failure
 
-## Report issues
+## Examples
 
-To report bugs and request new features, raise a GitHub issue in the [Ballerina Library](https://github.com/ballerina-platform/ballerina-library/issues) repository with the label `module/freemarker`.
+The [`examples`](https://github.com/ballerina-platform/module-ballerinax-freemarker/tree/main/examples) directory contains practical use cases:
+
+- [**Order confirmation email**](https://github.com/ballerina-platform/module-ballerinax-freemarker/tree/main/examples/order-confirmation-email) — Generates a formatted order confirmation email using variable interpolation, list iteration, and conditional blocks.
