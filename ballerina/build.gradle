@@ -25,7 +25,7 @@ plugins {
 description = 'Ballerina - FreeMarker Ballerina'
 
 def packageName = "freemarker"
-def packageOrg = "ballerina"
+def packageOrg = "ballerinax"
 def tomlVersion = stripBallerinaExtensionVersion("${project.version}")
 def ballerinaTomlFilePlaceHolder = new File("${project.rootDir}/build-config/resources/Ballerina.toml")
 def ballerinaTomlFile = new File("$project.projectDir/Ballerina.toml")
@@ -112,7 +112,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ballerina-platform/module-ballerina-${packageName}")
+            url = uri("https://maven.pkg.github.com/ballerina-platform/module-ballerinax-${packageName}")
             credentials {
                 username = System.getenv("publishUser")
                 password = System.getenv("publishPAT")

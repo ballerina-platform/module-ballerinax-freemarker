@@ -1,10 +1,10 @@
 [package]
-org = "ballerina"
+org = "ballerinax"
 name = "freemarker"
 version = "@toml.version@"
 authors = ["WSO2"]
 keywords = ["freemarker", "template", "rendering"]
-repository = "https://github.com/ballerina-platform/module-ballerina-freemarker"
+repository = "https://github.com/ballerina-platform/module-ballerinax-freemarker"
 license = ["Apache-2.0"]
 
 [build-options]
