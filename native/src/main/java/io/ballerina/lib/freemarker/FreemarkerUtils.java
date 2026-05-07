@@ -24,7 +24,6 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
-import io.ballerina.runtime.api.creators.ErrorCreator;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BString;
 
@@ -40,16 +39,17 @@ import java.util.Map;
  */
 public final class FreemarkerUtils {
 
-    public static final String ERROR = "Error";
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() { };
+    public static final String INLINE = "inline";
+    public static final String UTF_8 = "UTF-8";
 
     private FreemarkerUtils() {
     }
 
     private static Configuration createConfiguration() {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_33);
-        cfg.setDefaultEncoding("UTF-8");
+        cfg.setDefaultEncoding(UTF_8);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
         cfg.setClassicCompatible(true);
@@ -67,14 +67,13 @@ public final class FreemarkerUtils {
     public static Object render(BString template, BString jsonData) {
         try {
             Configuration cfg = createConfiguration();
-            Template tmpl = new Template("inline", new StringReader(template.getValue()), cfg);
+            Template tmpl = new Template(INLINE, new StringReader(template.getValue()), cfg);
             Map<String, Object> context = OBJECT_MAPPER.readValue(jsonData.getValue(), MAP_TYPE);
             StringWriter writer = new StringWriter();
             tmpl.process(context, writer);
             return StringUtils.fromString(writer.toString());
         } catch (IOException | TemplateException e) {
-            return ErrorCreator.createError(ModuleUtils.getModule(), ERROR,
-                    StringUtils.fromString("Failed to render template: " + e.getMessage()), null, null);
+            return Utils.createError("Failed to render template: " + e.getMessage(), e);
         }
     }
 
@@ -100,8 +99,7 @@ public final class FreemarkerUtils {
             tmpl.process(context, writer);
             return StringUtils.fromString(writer.toString());
         } catch (IOException | TemplateException e) {
-            return ErrorCreator.createError(ModuleUtils.getModule(), ERROR,
-                    StringUtils.fromString("Failed to render template file: " + e.getMessage()), null, null);
+            return Utils.createError("Failed to render template file: " + e.getMessage(), e);
         }
     }
 }
