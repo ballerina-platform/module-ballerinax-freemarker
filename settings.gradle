@@ -32,7 +32,7 @@ plugins {
    id "com.gradle.enterprise" version "3.2"
 }
 
-rootProject.name = 'module-ballerina-freemarker'
+rootProject.name = 'module-ballerinax-freemarker'
 
 include ':checkstyle'
 include ':freemarker-native'

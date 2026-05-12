@@ -140,7 +140,7 @@ To report bugs and request new features, create a GitHub issue with the label `m
 
 ### Build options
 
-Execute the commands from the repository root.
+Execute the following commands from the repository root to build from the source.
 
 1. To build the package:
 
@@ -160,31 +160,25 @@ Execute the commands from the repository root.
    ./gradlew clean build -x test
    ```
 
-4. To run only specific tests:
-
-   ```bash
-   ./gradlew clean build -run-with-native
-   ```
-
-5. To debug the package with a remote debugger:
+4. To debug package with a remote debugger:
 
    ```bash
    ./gradlew clean build -Pdebug=<port>
    ```
 
-6. To debug with the Ballerina language:
+5. To debug with the Ballerina language:
 
    ```bash
    ./gradlew clean build -PbalJavaDebug=<port>
    ```
 
-7. Publish the generated artifacts to the local Ballerina Central:
+6. Publish the generated artifacts to the local Ballerina Central:
 
    ```bash
    ./gradlew clean build -PpublishToLocalCentral=true
    ```
 
-8. Publish the generated artifacts to the Ballerina Central:
+7. Publish the generated artifacts to the Ballerina Central:
 
    ```bash
    ./gradlew clean build -PpublishToCentral=true
