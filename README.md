@@ -10,7 +10,7 @@ This library provides Ballerina library support to [Apache FreeMarker](https://f
 
 ## Overview
 
-The `ballerina/freemarker` library provides a Ballerina interface to [Apache FreeMarker](https://freemarker.apache.org/), a Java-based template engine for generating text output (HTML, email, configuration files, source code, etc.) from templates and data.
+The `ballerinax/freemarker` library provides a Ballerina interface to [Apache FreeMarker](https://freemarker.apache.org/), a Java-based template engine for generating text output (HTML, email, configuration files, source code, etc.) from templates and data.
 
 This library supports GraalVM native image compilation.
 
@@ -23,13 +23,10 @@ Both functions accept a `record {|json...;|}` data map, making it straightforwar
 
 ## Quickstart
 
-### Add the dependency
+### Add the import
 
-Add the `ballerina/freemarker` library as a dependency in your `Ballerina.toml`:
-
-```toml
-[dependencies]
-"ballerina/freemarker" = "0.1.0"
+```ballerina
+import ballerinax/freemarker;
 ```
 
 ### Render a template string
@@ -37,7 +34,7 @@ Add the `ballerina/freemarker` library as a dependency in your `Ballerina.toml`:
 Use `freemarker:render` to process an inline FreeMarker template:
 
 ```ballerina
-import ballerina/freemarker;
+import ballerinax/freemarker;
 import ballerina/io;
 
 public function main() returns error? {
@@ -53,7 +50,7 @@ public function main() returns error? {
 Use `freemarker:renderFromFile` to load and process a `.ftl` template file:
 
 ```ballerina
-import ballerina/freemarker;
+import ballerinax/freemarker;
 import ballerina/io;
 
 public function main() returns error? {
@@ -205,7 +202,7 @@ All the contributors are encouraged to read the [Ballerina Code of Conduct](http
 
 ## Useful links
 
-- For more information go to the [`freemarker` library](https://lib.ballerina.io/ballerina/freemarker/latest).
+- For more information go to the [`freemarker` library](https://central.ballerina.io/ballerinax/freemarker/latest).
 - For example demonstrations of the usage, go to [Ballerina By Example](https://ballerina.io/learn/by-example/).
 - Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
 - Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.

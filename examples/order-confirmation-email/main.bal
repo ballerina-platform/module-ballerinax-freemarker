@@ -14,7 +14,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import ballerina/freemarker;
+import ballerinax/freemarker;
 import ballerina/io;
 
 // Generates an order confirmation email from a FreeMarker template file.

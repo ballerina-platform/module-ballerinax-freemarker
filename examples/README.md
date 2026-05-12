@@ -1,6 +1,6 @@
 # Ballerina FreeMarker Examples
 
-This directory contains examples that demonstrate how to use the `ballerina/freemarker` library.
+This directory contains examples that demonstrate how to use the `ballerinax/freemarker` library.
 
 ## Examples
 
