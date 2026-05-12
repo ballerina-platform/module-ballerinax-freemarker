@@ -1,0 +1,17 @@
+{
+    "orderNumber": "PO-2026-00512",
+    "customerName": "Acme Corp",
+    "shipTo": "456 Office Park, Austin, TX 78701",
+    "orderDate": "2026-04-15",
+    "lineItems": [
+        {"name": "Wireless Keyboard", "qty": "5", "unitPrice": "79.99", "lineTotal": "399.95"},
+        {"name": "Ergonomic Mouse", "qty": "5", "unitPrice": "49.99", "lineTotal": "249.95"},
+        {"name": "27-inch Monitor", "qty": "3", "unitPrice": "349.99", "lineTotal": "1049.97"},
+        {"name": "USB-C Docking Station", "qty": "3", "unitPrice": "129.99", "lineTotal": "389.97"}
+    ],
+    "subtotal": "2089.84",
+    "taxRate": "8.5",
+    "taxAmount": "177.64",
+    "totalDue": "2267.48",
+    "notes": "Please deliver by April 22, 2026."
+}

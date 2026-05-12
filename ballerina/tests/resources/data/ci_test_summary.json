@@ -1,0 +1,14 @@
+{
+    "project": "module-ballerina-http",
+    "branch": "feature/connection-pooling",
+    "commitSha": "a1b2c3d",
+    "runnerOs": "Ubuntu",
+    "runnerArch": "x86_64",
+    "totalTests": "312",
+    "passedTests": "308",
+    "failedTests": "2",
+    "skippedTests": "2",
+    "durationSecs": "183",
+    "coveragePercent": "87.4",
+    "overallStatus": "UNSTABLE"
+}

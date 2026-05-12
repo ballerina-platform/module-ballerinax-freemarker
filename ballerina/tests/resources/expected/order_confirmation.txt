@@ -1,0 +1,14 @@
+Dear Emily Carter,
+
+Thank you for your order! Here are your order details:
+
+  Order ID   : ORD-20260415-9821
+  Product    : Wireless Noise-Cancelling Headphones
+  Quantity   : 2
+  Unit Price : $149.99
+  Total      : $299.98
+
+Estimated delivery by April 20, 2026.
+
+Best regards,
+TechMart Team

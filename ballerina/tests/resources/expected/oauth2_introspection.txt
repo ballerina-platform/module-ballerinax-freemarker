@@ -1,0 +1,12 @@
+Token Introspection Report
+──────────────────────────
+Active      : true
+Subject     : usr-00412
+Client ID   : web-app-prod
+Scope       : openid profile email orders:read
+Issuer      : https://auth.example.com
+Audience    : https://api.example.com
+Issued At   : 1713171600
+Expires At  : 1713175200
+Token Type  : Bearer
+JTI         : a-bc12-def3456

@@ -1,0 +1,13 @@
+{
+    "clientIp": "198.51.100.7",
+    "userId": "usr-4421",
+    "timestamp": "15/Apr/2026:10:22:03 +0000",
+    "method": "POST",
+    "path": "/api/v1/orders",
+    "protocol": "HTTP/1.1",
+    "statusCode": "201",
+    "responseBytes": "842",
+    "referer": "https://shop.example.com/checkout",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+    "durationMs": "134"
+}

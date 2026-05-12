@@ -1,0 +1,8 @@
+Hi Sophia,
+
+Welcome back, Premium member! Your exclusive content is below.
+
+This week in Dev Weekly:
+  - Rust's new async runtime lands in stable
+  - OpenAI releases GPT-5 API preview
+  - WSO2 Ballerina 2201.10.0 release highlights

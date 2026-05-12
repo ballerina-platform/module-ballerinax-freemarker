@@ -1,0 +1,13 @@
+{
+    "appName": "auth-service",
+    "namespace": "backend",
+    "appVersion": "2.1.0",
+    "teamName": "platform",
+    "replicas": "3",
+    "imageRepo": "registry.example.io",
+    "containerPort": "8080",
+    "cpuRequest": "250m",
+    "memoryRequest": "128Mi",
+    "cpuLimit": "500m",
+    "memoryLimit": "256Mi"
+}

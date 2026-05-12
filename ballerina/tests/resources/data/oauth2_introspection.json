@@ -1,0 +1,12 @@
+{
+    "active": "true",
+    "sub": "usr-00412",
+    "clientId": "web-app-prod",
+    "scope": "openid profile email orders:read",
+    "iss": "https://auth.example.com",
+    "aud": "https://api.example.com",
+    "iat": "1713171600",
+    "exp": "1713175200",
+    "tokenType": "Bearer",
+    "jti": "a-bc12-def3456"
+}

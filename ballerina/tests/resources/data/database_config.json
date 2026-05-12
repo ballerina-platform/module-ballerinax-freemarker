@@ -1,0 +1,11 @@
+{
+    "dbHost": "db-prod-primary.internal",
+    "dbPort": "5432",
+    "dbName": "orders_db",
+    "dbUser": "svc_orders",
+    "dbPassword": "s3cr3t!Pass",
+    "poolMin": "5",
+    "poolMax": "50",
+    "poolTimeout": "30000",
+    "sslEnabled": "true"
+}

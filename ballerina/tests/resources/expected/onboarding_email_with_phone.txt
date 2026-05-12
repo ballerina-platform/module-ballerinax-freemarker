@@ -1,0 +1,11 @@
+Welcome to Horizon Labs, Priya Mehta!
+
+Your account has been created:
+  Email    : priya.mehta@horizonlabs.io
+  Username : pmehta
+  Role     : Senior Engineer
+  Team     : Platform
+  Phone    : +1-415-555-0199
+Login at https://id.horizonlabs.io and change your temporary password: Tr@nsit!on42
+
+Your onboarding buddy is Carlos Rivera (c.rivera@horizonlabs.io).

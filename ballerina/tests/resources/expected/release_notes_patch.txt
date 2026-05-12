@@ -1,0 +1,74 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+  Ballerina HTTP Module — Release Notes
+  Version 2.10.3 | Released: 2026-04-10 | Type: Patch
+╚══════════════════════════════════════════════════════════════════════════╝
+
+OVERVIEW
+────────────────────────────────────────────────────────────────────────────
+Patch release fixing three high-priority bugs and updating security dependencies.
+
+  Release Manager : Anjana Silva
+  QA Lead         : Shafreen Anfar
+  Build Number    : 2026.04.10.002
+  Git Tag         : v2.10.3
+  Commit          : c3f8a2d1
+  Artifact URL    : https://dist.ballerina.io/artifacts/http-2.10.3.jar
+  Changelog       : https://github.com/ballerina-platform/module-ballerina-http/blob/main/changelog.md
+  Milestone       : https://github.com/ballerina-platform/module-ballerina-http/milestone/40
+
+COMPATIBILITY
+────────────────────────────────────────────────────────────────────────────
+  Runtime         : Ballerina 2201.9.0 or later
+  Database        : N/A
+  API             : Fully compatible with 2.10.x
+  Upgrade From    : 2.10.0 or later
+                    (earlier versions require a full migration — see )
+
+NEW FEATURES
+────────────────────────────────────────────────────────────────────────────
+  No new features in this patch  [N/A]
+    This is a bug-fix-only patch release.
+
+  N/A  [N/A]
+    N/A
+
+  N/A  [N/A]
+    N/A
+
+IMPROVEMENTS
+────────────────────────────────────────────────────────────────────────────
+  * Update Netty to 4.1.109 for security patches  (HTTP-7988)
+  * Improve connection close log message to include remote address  (HTTP-7971)
+  * Reduce log level of routine keep-alive probe messages from WARN to DEBUG  (HTTP-7960)
+
+BUG FIXES
+────────────────────────────────────────────────────────────────────────────
+  [HIGH]  Fix NPE when response body is null in HTTP/2 trailers  (HTTP-7999)
+  [HIGH]  Fix connection pool starvation under burst traffic with slow upstreams  (HTTP-7991)
+  [MEDIUM]  Fix incorrect status code mapping for 308 Permanent Redirect  (HTTP-7975)
+  [LOW]  Fix typo in log message for SSL certificate expiry warning  (HTTP-7962)
+  [LOW]  Fix inconsistent line endings in HTTP header serialisation on Windows  (HTTP-7951)
+SECURITY ADVISORIES
+────────────────────────────────────────────────────────────────────────────
+  No security advisories in this release.
+
+DEPENDENCY UPDATES
+────────────────────────────────────────────────────────────────────────────
+  netty: 4.1.107 -> 4.1.109
+  conscrypt: 2.5.2 -> 2.5.2
+  micrometer-core: 1.12.4 -> 1.12.4
+  jackson-databind: 2.16.1 -> 2.16.1
+
+CONTRIBUTORS
+────────────────────────────────────────────────────────────────────────────
+  Anjana Silva, Shafreen Anfar
+
+  Total commits  : 12
+  Files changed  : 28
+  Insertions (+) : 334
+  Deletions  (-) : 97
+
+────────────────────────────────────────────────────────────────────────────
+Documentation  : https://lib.ballerina.io/ballerina/http/2.10.3
+Report issues  : https://github.com/ballerina-platform/module-ballerina-http/issues
+Community      : https://discord.gg/ballerinalang

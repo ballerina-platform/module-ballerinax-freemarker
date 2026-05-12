@@ -1,0 +1,21 @@
+INVOICE
+═══════════════════════════════════
+Invoice No : INV-2026-00847
+Date       : 2026-04-15
+Due Date   : 2026-05-15
+
+Bill To:
+  Acme Corporation
+  742 Evergreen Terrace
+  Springfield, US
+
+  Item: Annual SaaS Subscription - Enterprise Plan
+  Qty : 12 x $499.00
+
+  Subtotal : $5988.00
+  Tax (8.5%) : $508.98
+  ─────────────────────
+  TOTAL    : $6496.98
+
+Payment method: ACH Bank Transfer
+Reference     : ACH-88219934

@@ -1,0 +1,42 @@
+[package]
+org = "ballerinax"
+name = "freemarker"
+version = "@toml.version@"
+authors = ["WSO2"]
+keywords = ["freemarker", "template", "rendering"]
+repository = "https://github.com/ballerina-platform/module-ballerinax-freemarker"
+license = ["Apache-2.0"]
+
+[build-options]
+observabilityIncluded = true
+graalvmCompatible = true
+
+[[platform.java21.dependency]]
+groupId = "io.ballerina.lib"
+artifactId = "freemarker-native"
+version = "@toml.version@"
+path = "../native/build/libs/freemarker-native-@project.version@.jar"
+
+[[platform.java21.dependency]]
+groupId = "org.freemarker"
+artifactId = "freemarker"
+version = "@freemarker.version@"
+path = "./lib/freemarker-@freemarker.version@.jar"
+
+[[platform.java21.dependency]]
+groupId = "com.fasterxml.jackson.core"
+artifactId = "jackson-databind"
+version = "@jackson.version@"
+path = "./lib/jackson-databind-@jackson.version@.jar"
+
+[[platform.java21.dependency]]
+groupId = "com.fasterxml.jackson.core"
+artifactId = "jackson-core"
+version = "@jackson.version@"
+path = "./lib/jackson-core-@jackson.version@.jar"
+
+[[platform.java21.dependency]]
+groupId = "com.fasterxml.jackson.core"
+artifactId = "jackson-annotations"
+version = "@jackson.version@"
+path = "./lib/jackson-annotations-@jackson.version@.jar"

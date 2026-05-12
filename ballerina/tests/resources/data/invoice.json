@@ -1,0 +1,18 @@
+{
+    "invoiceNumber": "INV-2026-00847",
+    "invoiceDate": "2026-04-15",
+    "dueDate": "2026-05-15",
+    "billingName": "Acme Corporation",
+    "billingAddress": "742 Evergreen Terrace",
+    "billingCity": "Springfield",
+    "billingCountry": "US",
+    "itemDescription": "Annual SaaS Subscription - Enterprise Plan",
+    "itemQty": "12",
+    "itemUnitPrice": "499.00",
+    "subtotal": "5988.00",
+    "taxRate": "8.5",
+    "taxAmount": "508.98",
+    "totalDue": "6496.98",
+    "paymentMethod": "ACH Bank Transfer",
+    "paymentRef": "ACH-88219934"
+}

@@ -1,0 +1,1 @@
+{"level":"${level}","ts":"${timestamp}","logger":"${logger}","msg":"${message}","service":"${service}","traceId":"${traceId}","spanId":"${spanId}","userId":"${userId}","latencyMs":${latencyMs},"statusCode":${statusCode},"host":"${host}","env":"${environment}"}

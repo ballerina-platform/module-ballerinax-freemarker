@@ -1,0 +1,105 @@
+INCIDENT REPORT
+═══════════════════════════════════════════════════════════════════════
+Report ID       : INC-RPT-2026-00217
+Classification  : CONFIDENTIAL
+Status          : RESOLVED
+Created By      : Wei Zhang
+Created At      : 2026-04-15 14:30:00 UTC
+Last Updated    : 2026-04-15 18:45:00 UTC
+═══════════════════════════════════════════════════════════════════════
+
+1. INCIDENT OVERVIEW
+───────────────────────────────────────────────────────────────────────
+Title            : Complete payment processing outage all transactions failing
+Severity         : SEV-1
+Priority         : P1
+Incident ID      : INC-2026-04150091
+Detected At      : 2026-04-15 11:02:00 UTC
+Resolved At      : 2026-04-15 13:47:00 UTC
+Total Duration   : 165 minutes
+Environment      : production
+Affected Service : payment-service, order-service, checkout-api
+On-call Team     : Payments Platform
+Incident Owner   : Diego Alvarez
+╔══════════════════════════════════════════════════════════════╗
+  *** P1 CRITICAL — EXECUTIVE ESCALATION REQUIRED ***
+  Incident Commander : Sarah Kim
+  War Room Channel   : #inc-2026-04150091
+  Bridge Line        : +1-800-555-0191 PIN: 847291
+╚══════════════════════════════════════════════════════════════╝
+
+2. IMPACT ASSESSMENT
+───────────────────────────────────────────────────────────────────────
+Affected Region      : us-east-1, eu-west-1
+Affected Users (est) : ~84000
+Peak Error Rate      : 100%
+P99 Latency Peak     : 30000ms  (SLO threshold: 500ms)
+Revenue Impact (est) : $142000
+SLA Breach           : YES — violated 99.95% availability objective
+Customer Facing      : Yes
+Data Loss            : None confirmed
+Security Impact      : None identified
+
+3. ROOT CAUSE ANALYSIS
+───────────────────────────────────────────────────────────────────────
+Category        : Infrastructure - Database
+Root Cause      :
+  Primary RDS instance ran out of connection pool capacity after a connection leak was introduced in deploy v4.12.1, causing all new DB connections to be refused and transactions to fail with a timeout.
+
+Contributing Factors:
+  - Connection leak in v4.12.1 not caught by pre-prod load tests
+  - Connection pool exhaustion alert threshold set too high (95% instead of 75%)
+  - Canary deployment skipped due to release timeline pressure
+
+Trigger Event   : Deployment of payment-service v4.12.1 at 10:58 UTC
+First Alert     : Datadog synthetic monitor at 2026-04-15 11:02:00 UTC
+Detection Method: Datadog synthetic monitor + PagerDuty page
+Alert ID        : ALT-20260415-00338
+
+4. TIMELINE OF EVENTS
+───────────────────────────────────────────────────────────────────────
+  2026-04-15 11:02:00 UTC   Incident detected via Datadog synthetic monitor + PagerDuty page
+  2026-04-15 11:05:00 UTC   Alert acknowledged by on-call engineer Diego Alvarez
+  2026-04-15 11:38:00 UTC  Root cause identified: DB connection pool exhaustion from v4.12.1 leak
+  2026-04-15 12:10:00 UTC Mitigation applied: Rolled back payment-service to v4.11.9
+  2026-04-15 13:47:00 UTC   Incident resolved; system confirmed stable
+  2026-04-15 14:30:00 UTC   Post-incident report filed by Wei Zhang
+
+5. MITIGATION AND RESOLUTION
+───────────────────────────────────────────────────────────────────────
+Mitigation      : Rolled back payment-service to v4.11.9
+Resolution      : Rollback to v4.11.9 restored service; connection leak patched in v4.12.2
+Rollback        : Yes — reverted to build payment-service v4.11.9
+Fix Deployed    : Yes — Connection leak fix in v4.12.2 deployed at 2026-04-15 16:20:00 UTC
+Monitoring OK   : Confirmed stable at 2026-04-15 13:47:00 UTC
+
+6. CORRECTIVE ACTION ITEMS
+───────────────────────────────────────────────────────────────────────
+ID       Owner                Due Date      Priority   Description
+-------- -------------------- ------------- ---------- ----------------------------------------
+AI-001   Diego Alvarez       2026-04-22  HIGH       Add connection leak detection to CI integration tests
+AI-002   Maya Patel       2026-04-22  HIGH       Reduce connection pool alert threshold from 95% to 75%
+AI-003   Release Engineering       2026-04-29  MEDIUM     Enforce canary deployment policy for all payment service changes
+AI-004   Wei Zhang       2026-05-06  LOW        Add DB connection pool capacity to weekly capacity review
+
+7. LESSONS LEARNED AND PREVENTION
+───────────────────────────────────────────────────────────────────────
+What went well   : Fast detection via synthetic monitors; clear war-room communication
+What went poorly : Connection leak slipped past pre-prod tests; canary skipped
+Process Gap      : No mandatory canary stage for payment-service deployments
+Monitoring Gap   : Connection pool utilization alert threshold was too permissive
+Runbook          : Created — https://runbooks.example.com/payment-db-exhaustion
+Post-Mortem      : 2026-04-17 14:00:00 UTC, owner: Diego Alvarez
+Jira Epic        : PAY-8821
+
+8. EXTERNAL COMMUNICATIONS LOG
+───────────────────────────────────────────────────────────────────────
+Status Page Updated : Yes at 2026-04-15 11:15:00 UTC
+Customer Comms Sent : Yes at 2026-04-15 12:00:00 UTC
+Regulatory Notify   : Not required
+PR / Comms Owner    : Keiko Tanaka
+
+═══════════════════════════════════════════════════════════════════════
+Approved by   : Sarah Kim (Incident Commander)
+Approval time : 2026-04-15 18:45:00 UTC
+═══════════════════════════════════════════════════════════════════════

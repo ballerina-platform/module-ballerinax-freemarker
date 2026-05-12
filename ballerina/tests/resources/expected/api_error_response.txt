@@ -1,0 +1,8 @@
+{
+  "status": 422,
+  "error": "VALIDATION_FAILED",
+  "message": "The field email must be a valid email address.",
+  "path": "/api/v2/users",
+  "requestId": "req-7f3b91ca-0d22",
+  "timestamp": "2026-04-15T09:15:00Z"
+}

@@ -1,0 +1,14 @@
+{
+    "level": "ERROR",
+    "timestamp": "2026-04-15T11:55:02.312Z",
+    "logger": "io.example.OrderService",
+    "message": "Failed to persist order: duplicate key violation",
+    "service": "order-service",
+    "traceId": "4bf92f3577b34da6a3ce929d0e0e4736",
+    "spanId": "00f067aa0ba902b7",
+    "userId": "usr-9923",
+    "latencyMs": "342",
+    "statusCode": "500",
+    "host": "pod-order-service-7d8f9b-xkq2p",
+    "environment": "production"
+}

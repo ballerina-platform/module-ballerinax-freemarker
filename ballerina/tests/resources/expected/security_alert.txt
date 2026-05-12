@@ -1,0 +1,19 @@
+[CRITICAL] SECURITY ALERT — Privilege Escalation Attempt
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Alert ID        : SEC-2026-04150042
+Detected At     : 2026-04-15 11:44:28 UTC
+Affected Asset  : prod-db-primary (10.0.1.5)
+Source IP       : 192.0.2.88
+Actor           : svc_legacy_importer
+Action          : GRANT ALL PRIVILEGES
+Resource        : orders_db.*
+Risk Score      : 97/100
+
+Description:
+  Service account attempted to grant superuser privileges on production database.
+
+Recommended Action:
+  Revoke credentials, rotate secrets, and initiate incident response playbook IR-DB-01.
+
+Assigned To : security-oncall@example.com
+Ticket      : https://jira.example.com/browse/SEC-4421
