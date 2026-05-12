@@ -29,7 +29,7 @@ COMPATIBILITY
   Database        : ${dbCompatibility}
   API             : ${apiCompatibility}
   Upgrade From    : ${minUpgradeVersion} or later
-                    (earlier versions require a full migration — see ${migrationGuideUrl})
+                    (earlier versions require a full migration — see ${migrationGuideUrl!})
 
 NEW FEATURES
 ────────────────────────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ IMPROVEMENTS
   * ${improvement1}  (${improvement1IssueId})
   * ${improvement2}  (${improvement2IssueId})
   * ${improvement3}  (${improvement3IssueId})
-<#if improvement4>
+<#if improvement4??>
   * ${improvement4}  (${improvement4IssueId})
 </#if>
 

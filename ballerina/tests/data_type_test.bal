@@ -53,8 +53,8 @@ function testBooleanFalseCondition() returns error? {
 
 @test:Config {}
 function testNullValue() returns error? {
-    // Jackson maps JSON null → Java null; FreeMarker classicCompatible renders it as "".
-    string result = check render("${value}", {"value": null});
+    // Jackson maps JSON null → Java null; FreeMarker renders it as "" with the ! default operator.
+    string result = check render("${value!}", {"value": null});
     test:assertEquals(result, "");
 }
 

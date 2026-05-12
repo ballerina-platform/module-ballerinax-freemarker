@@ -5,7 +5,7 @@ Your account has been created:
   Username : ${username}
   Role     : ${role}
   Team     : ${team}
-<#if phone>  Phone    : ${phone}
+<#if phone??>  Phone    : ${phone}
 <#else>  Phone    : (not provided)
 </#if>
 Login at ${loginUrl} and change your temporary password: ${tempPassword}

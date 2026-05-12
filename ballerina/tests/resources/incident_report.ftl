@@ -51,7 +51,7 @@ Root Cause      :
 Contributing Factors:
   - ${contributingFactor1}
   - ${contributingFactor2}
-<#if contributingFactor3>
+<#if contributingFactor3??>
   - ${contributingFactor3}
 </#if>
 

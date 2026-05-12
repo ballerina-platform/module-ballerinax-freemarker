@@ -43,7 +43,7 @@ function testMultipleVariables() returns error? {
 
 @test:Config {}
 function testMissingVariable() returns error? {
-    string result = check render("Hello, ${name}!", {});
+    string result = check render("Hello, ${name!}!", {});
     test:assertEquals(result, "Hello, !");
 }
 
