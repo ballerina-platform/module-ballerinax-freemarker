@@ -31,6 +31,7 @@ allprojects {
 
     repositories {
         mavenLocal()
+        mavenCentral()
         maven {
             url = 'https://maven.wso2.org/nexus/content/repositories/releases/'
         }
@@ -66,6 +67,9 @@ subprojects {
         jbalTools ("org.ballerinalang:jballerina-tools:${ballerinaLangVersion}") {
             transitive = false
         }
+
+        /* Standard libraries */
+        ballerinaStdLibs "io.ballerina.stdlib:io-ballerina:${stdlibIoVersion}"
     }
 }
 

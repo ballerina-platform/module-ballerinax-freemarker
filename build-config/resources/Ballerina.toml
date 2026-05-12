@@ -3,12 +3,14 @@ org = "ballerinax"
 name = "freemarker"
 version = "@toml.version@"
 authors = ["WSO2"]
-keywords = ["freemarker", "template", "rendering"]
+keywords = ["freemarker", "template", "rendering", "Area/Developer Tools", "Vendor/Apache"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-freemarker"
 license = ["Apache-2.0"]
 
 [build-options]
 observabilityIncluded = true
+
+[platform.java21]
 graalvmCompatible = true
 
 [[platform.java21.dependency]]
