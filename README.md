@@ -39,7 +39,7 @@ import ballerina/io;
 
 public function main() returns error? {
     string template = "Hello, ${name}! You have ${count} new messages.";
-    string result = check freemarker:render(template, {name: "Alice", count: 5});
+    string result = check freemarker:render(template, {"name": "Alice", "count": 5});
     io:println(result);
     // Output: Hello, Alice! You have 5 new messages.
 }
@@ -83,7 +83,7 @@ Items purchased:
 
 Order total: $${total}
 
-<#if isPremiumMember>
+<#if isPremiumMember??  && isPremiumMember>
 Thank you for being a Premium member!
 </#if>
 ```
