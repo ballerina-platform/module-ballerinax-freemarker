@@ -54,7 +54,6 @@ public final class FreemarkerUtils {
         cfg.setDefaultEncoding(UTF_8);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
-        cfg.setClassicCompatible(true);
         cfg.setLocale(Locale.ENGLISH);
         return cfg;
     }
