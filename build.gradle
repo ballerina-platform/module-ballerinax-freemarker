@@ -75,19 +75,17 @@ subprojects {
 
 def moduleVersion = project.version.replace("-SNAPSHOT", "")
 
-if (gradle.startParameter.taskNames.any { it.contains('release') }) {
-    release {
-        failOnPublishNeeded = false
-        failOnSnapshotDependencies = true
+release {
+    failOnPublishNeeded = false
+    failOnSnapshotDependencies = true
 
-        buildTasks = ['build']
-        versionPropertyFile = 'gradle.properties'
-        tagTemplate = 'v$version'
+    buildTasks = ['build']
+    versionPropertyFile = 'gradle.properties'
+    tagTemplate = 'v$version'
 
-        git {
-            requireBranch = "release-${moduleVersion}"
-            pushToRemote = 'origin'
-        }
+    git {
+        requireBranch = "release-${moduleVersion}"
+        pushToRemote = 'origin'
     }
 }
 
