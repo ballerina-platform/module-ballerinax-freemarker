@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Map;
@@ -92,7 +93,7 @@ public final class FreemarkerUtils {
             StringWriter writer = new StringWriter();
             tmpl.process(context, writer);
             return StringUtils.fromString(writer.toString());
-        } catch (IOException | TemplateException e) {
+        } catch (InvalidPathException | IOException | TemplateException e) {
             return Utils.createError("Failed to render template file: " + e.getMessage(), e);
         }
     }
