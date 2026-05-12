@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "includes": [
+      {"pattern": "freemarker/version\\.properties"},
+      {"pattern": "freemarker/ext/beans/unsafeMethods\\.properties"},
+      {"pattern": "freemarker/core/.*"},
+      {"pattern": "freemarker/log/.*"}
+    ]
+  }
+}
