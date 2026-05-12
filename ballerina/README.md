@@ -2,14 +2,12 @@
 
 The `ballerinax/freemarker` library provides a Ballerina interface to [Apache FreeMarker](https://freemarker.apache.org/), a Java-based template engine for generating text output (HTML, email, configuration files, source code, etc.) from templates and data.
 
-This library supports GraalVM native image compilation.
+## Key Features
 
-It exposes two core functions:
-
-- **`render`** — renders a FreeMarker template string with a provided data context.
-- **`renderFromFile`** — renders a FreeMarker template loaded from a `.ftl` file.
-
-Both functions accept a `record {|json...;|}` data map, making it straightforward to pass structured Ballerina data into your templates.
+- Render FreeMarker templates from inline strings using structured Ballerina data
+- Load and render FreeMarker templates from `.ftl` files on the filesystem
+- Full support for FreeMarker template syntax including variable interpolation, conditionals (`<#if>`), and iteration (`<#list>`)
+- Pass any `record {|json...;|}` map directly as the template data context
 
 ## Quickstart
 
