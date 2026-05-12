@@ -3,7 +3,7 @@ org = "ballerinax"
 name = "freemarker"
 version = "1.0.0"
 authors = ["WSO2"]
-keywords = ["freemarker", "template", "rendering", "Developer Tools", "Apache"]
+keywords = ["freemarker", "template", "rendering", "Area/Developer Tools", "Vendor/Apache"]
 repository = "https://github.com/ballerina-platform/module-ballerinax-freemarker"
 license = ["Apache-2.0"]
 
