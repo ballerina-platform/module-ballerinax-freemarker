@@ -20,6 +20,7 @@ package io.ballerina.lib.freemarker;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -27,13 +28,12 @@ import freemarker.template.TemplateExceptionHandler;
 import io.ballerina.runtime.api.utils.StringUtils;
 import io.ballerina.runtime.api.values.BString;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
-import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -46,6 +46,7 @@ public final class FreemarkerUtils {
     private static final String INLINE = "inline";
     private static final String UTF_8 = "UTF-8";
     private static final Configuration CFG = createConfiguration();
+    public static final String INVALID_TEMPLATE_PATH_ERROR = "Failed to render template file: invalid template path: ";
 
     private FreemarkerUtils() {
     }
@@ -55,7 +56,12 @@ public final class FreemarkerUtils {
         cfg.setDefaultEncoding(UTF_8);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
-        cfg.setLocale(Locale.ENGLISH);
+        return cfg;
+    }
+
+    private static Configuration createConfiguration(FileTemplateLoader loader) {
+        Configuration cfg = createConfiguration();
+        cfg.setTemplateLoader(loader);
         return cfg;
     }
 
@@ -87,8 +93,16 @@ public final class FreemarkerUtils {
      */
     public static Object renderFromFile(BString templatePath, BString jsonData) {
         try {
-            String content = Files.readString(Path.of(templatePath.getValue()));
-            Template tmpl = new Template(templatePath.getValue(), new StringReader(content), CFG);
+            Path path = Path.of(templatePath.getValue()).toAbsolutePath();
+            Path parentPath = path.getParent();
+            Path fileNamePath = path.getFileName();
+            if (parentPath == null || fileNamePath == null) {
+                return Utils.createError(INVALID_TEMPLATE_PATH_ERROR + templatePath.getValue(), null);
+            }
+            File templateDir = parentPath.toFile();
+            String templateName = fileNamePath.toString();
+            Configuration fileCfg = createConfiguration(new FileTemplateLoader(templateDir));
+            Template tmpl = fileCfg.getTemplate(templateName);
             Map<String, Object> context = OBJECT_MAPPER.readValue(jsonData.getValue(), MAP_TYPE);
             StringWriter writer = new StringWriter();
             tmpl.process(context, writer);
