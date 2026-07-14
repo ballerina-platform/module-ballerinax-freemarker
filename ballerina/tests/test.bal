@@ -247,6 +247,33 @@ function testFlightBoardingPassTemplate() returns error? {
     test:assertEquals(result, expected);
 }
 
+@test:Config {}
+function testIncludeWithPartial() returns error? {
+    string result = check renderFromFile(RESOURCES + "include_with_partial.ftl", check readData("include_with_partial.json"));
+    string expected = check io:fileReadString(EXPECTED + "include_with_partial.txt") + "\n";
+    test:assertEquals(result, expected);
+}
+
+@test:Config {}
+function testImportMacros() returns error? {
+    string result = check renderFromFile(RESOURCES + "import_macros.ftl", check readData("import_macros.json"));
+    string expected = check io:fileReadString(EXPECTED + "import_macros.txt") + "\n";
+    test:assertEquals(result, expected);
+}
+
+@test:Config {}
+function testNestedInclude() returns error? {
+    string result = check renderFromFile(RESOURCES + "nested_include.ftl", check readData("nested_include.json"));
+    string expected = check io:fileReadString(EXPECTED + "nested_include.txt") + "\n";
+    test:assertEquals(result, expected);
+}
+
+@test:Config {}
+function testMissingPartialReturnsError() {
+    string|Error result = renderFromFile(RESOURCES + "broken_include.ftl", {});
+    test:assertTrue(result is Error);
+}
+
 // ── Expected-file generator ───────────────────────────────────────────────────
 // Run once to create/refresh expected files, then set enable: false.
 
@@ -306,4 +333,10 @@ function generateExpectedFiles() returns error? {
         check renderFromFile(RESOURCES + "flight_boarding.ftl", check readData("flight_boarding.json")));
     check io:fileWriteString(EXPECTED + "purchase_order.txt",
         check renderFromFile(RESOURCES + "purchase_order.ftl", check readData("purchase_order.json")));
+    check io:fileWriteString(EXPECTED + "include_with_partial.txt",
+        check renderFromFile(RESOURCES + "include_with_partial.ftl", check readData("include_with_partial.json")));
+    check io:fileWriteString(EXPECTED + "import_macros.txt",
+        check renderFromFile(RESOURCES + "import_macros.ftl", check readData("import_macros.json")));
+    check io:fileWriteString(EXPECTED + "nested_include.txt",
+        check renderFromFile(RESOURCES + "nested_include.ftl", check readData("nested_include.json")));
 }
