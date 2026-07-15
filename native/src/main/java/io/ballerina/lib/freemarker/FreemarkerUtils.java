@@ -46,7 +46,6 @@ public final class FreemarkerUtils {
     private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() { };
     private static final String INLINE = "inline";
     private static final String UTF_8 = "UTF-8";
-    private static final Configuration CFG = createConfiguration();
     private static final String INVALID_TEMPLATE_PATH_ERROR = "Failed to render template file: invalid template path: ";
 
     private FreemarkerUtils() {
@@ -76,7 +75,7 @@ public final class FreemarkerUtils {
      */
     public static Object render(BString template, BString jsonData) {
         try {
-            Template tmpl = new Template(INLINE, new StringReader(template.getValue()), CFG);
+            Template tmpl = new Template(INLINE, new StringReader(template.getValue()), createConfiguration());
             Map<String, Object> context = OBJECT_MAPPER.readValue(jsonData.getValue(), MAP_TYPE);
             StringWriter writer = new StringWriter();
             tmpl.process(context, writer);
