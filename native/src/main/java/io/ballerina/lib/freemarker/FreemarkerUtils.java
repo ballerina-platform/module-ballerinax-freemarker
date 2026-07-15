@@ -36,7 +36,6 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Native implementation of the Ballerina FreeMarker module functions.
@@ -48,7 +47,6 @@ public final class FreemarkerUtils {
     private static final String INLINE = "inline";
     private static final String UTF_8 = "UTF-8";
     private static final Configuration CFG = createConfiguration();
-    private static final ConcurrentHashMap<String, Configuration> CFG_CACHE = new ConcurrentHashMap<>();
     private static final String INVALID_TEMPLATE_PATH_ERROR = "Failed to render template file: invalid template path: ";
 
     private FreemarkerUtils() {
@@ -105,13 +103,7 @@ public final class FreemarkerUtils {
             }
             File templateDir = parentPath.toFile();
             String templateName = fileNamePath.toString();
-            String dirPath = templateDir.getAbsolutePath();
-            Configuration fileCfg = CFG_CACHE.get(dirPath);
-            if (fileCfg == null) {
-                Configuration newCfg = createConfiguration(new FileTemplateLoader(templateDir));
-                Configuration existing = CFG_CACHE.putIfAbsent(dirPath, newCfg);
-                fileCfg = existing != null ? existing : newCfg;
-            }
+            Configuration fileCfg = createConfiguration(new FileTemplateLoader(templateDir));
             Template tmpl = fileCfg.getTemplate(templateName);
             Map<String, Object> context = OBJECT_MAPPER.readValue(jsonData.getValue(), MAP_TYPE);
             StringWriter writer = new StringWriter();
