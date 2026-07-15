@@ -34,6 +34,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -48,7 +49,7 @@ public final class FreemarkerUtils {
     private static final String UTF_8 = "UTF-8";
     private static final Configuration CFG = createConfiguration();
     private static final ConcurrentHashMap<String, Configuration> CFG_CACHE = new ConcurrentHashMap<>();
-    public static final String INVALID_TEMPLATE_PATH_ERROR = "Failed to render template file: invalid template path: ";
+    private static final String INVALID_TEMPLATE_PATH_ERROR = "Failed to render template file: invalid template path: ";
 
     private FreemarkerUtils() {
     }
@@ -58,6 +59,7 @@ public final class FreemarkerUtils {
         cfg.setDefaultEncoding(UTF_8);
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
+        cfg.setLocale(Locale.ENGLISH);
         return cfg;
     }
 
