@@ -57,6 +57,7 @@ public final class FreemarkerUtils {
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         cfg.setLogTemplateExceptions(false);
         cfg.setLocale(Locale.ENGLISH);
+        cfg.setLocalizedLookup(false);
         return cfg;
     }
 
