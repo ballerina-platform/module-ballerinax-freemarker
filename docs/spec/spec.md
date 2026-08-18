@@ -162,7 +162,7 @@ Hello, ${name}! You have ${count} new messages.
 Conditional rendering is supported using `<#if>`, `<#elseif>`, and `<#else>` directives.
 
 ```ftl
-<#if isPremiumMember?? && isPremiumMember>
+<#if isPremium?? && isPremium>
 Thank you for being a Premium member!
 <#else>
 Consider upgrading to Premium for exclusive benefits.
