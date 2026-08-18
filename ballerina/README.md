@@ -2,7 +2,7 @@
 
 The `ballerinax/freemarker` library provides a Ballerina interface to [Apache FreeMarker](https://freemarker.apache.org/), a Java-based template engine for generating text output (HTML, email, configuration files, source code, etc.) from templates and data.
 
-## Key Features
+### Key Features
 
 - Render FreeMarker templates from inline strings using structured Ballerina data
 - Load and render FreeMarker templates from `.ftl` files on the filesystem
@@ -11,18 +11,19 @@ The `ballerinax/freemarker` library provides a Ballerina interface to [Apache Fr
 
 ## Quickstart
 
-### Add the import
+### Step 1: Import the module
 
 ```ballerina
 import ballerinax/freemarker;
 ```
 
-### Render a template string
+### Step 2: Invoke FreeMarker operations
+
+#### Render a template string
 
 Use `freemarker:render` to process an inline FreeMarker template:
 
 ```ballerina
-import ballerinax/freemarker;
 import ballerina/io;
 
 public function main() returns error? {
@@ -33,12 +34,11 @@ public function main() returns error? {
 }
 ```
 
-### Render a template from a file
+#### Render a template from a file
 
 Use `freemarker:renderFromFile` to load and process a `.ftl` template file:
 
 ```ballerina
-import ballerinax/freemarker;
 import ballerina/io;
 
 public function main() returns error? {
@@ -71,36 +71,10 @@ Items purchased:
 
 Order total: $${total}
 
-<#if isPremiumMember??  && isPremiumMember>
+<#if isPremiumMember?? && isPremiumMember>
 Thank you for being a Premium member!
 </#if>
 ```
-
-## API
-
-### `render`
-
-```ballerina
-public isolated function render(string template, record {|json...;|} data) returns string|Error
-```
-
-Renders a FreeMarker template string with the provided data context.
-
-- `template` (`string`) — FreeMarker template string
-- `data` (`record {|json...;|}`) — Key-value pairs used as the data context
-- **return** (`string|Error`) — Rendered string output, or an `Error` on failure
-
-### `renderFromFile`
-
-```ballerina
-public isolated function renderFromFile(string templatePath, record {|json...;|} data) returns string|Error
-```
-
-Renders a FreeMarker template loaded from a file.
-
-- `templatePath` (`string`) — Path to the `.ftl` template file
-- `data` (`record {|json...;|}`) — Key-value pairs used as the data context
-- **return** (`string|Error`) — Rendered string output, or an `Error` on failure
 
 ## Examples
 
