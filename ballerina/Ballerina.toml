@@ -1,7 +1,7 @@
 [package]
 org = "ballerinax"
 name = "freemarker"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["WSO2"]
 icon = "icon.png"
 keywords = ["freemarker", "template", "rendering", "Area/Developer Tools", "Vendor/Apache", "Type/Library"]
@@ -17,8 +17,8 @@ graalvmCompatible = true
 [[platform.java21.dependency]]
 groupId = "io.ballerina.lib"
 artifactId = "freemarker-native"
-version = "1.0.1"
-path = "../native/build/libs/freemarker-native-1.0.1.jar"
+version = "1.0.2"
+path = "../native/build/libs/freemarker-native-1.0.2.jar"
 
 [[platform.java21.dependency]]
 groupId = "org.freemarker"
